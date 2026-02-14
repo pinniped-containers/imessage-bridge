@@ -16,6 +16,6 @@ RUN apt update -y && apt upgrade -y \
     && sed -i -e 's/sudo //g' scripts/bootstrap-linux.sh \
     && make build \
     && ls /root/imessage-bridge/ \
-    && ls /root/imessage-bridge/data/ |
+    && ls /root/imessage-bridge/data/ \
     && mv /root/imessage-bridge/data/mautrix-imessage-v2 /usr/bin/ \
     && rm -rf /root/imessage-bridge
