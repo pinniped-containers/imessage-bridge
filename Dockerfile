@@ -12,7 +12,9 @@ WORKDIR /root/imessage-bridge
     
 RUN apt update -y && apt upgrade -y \
     && apt install -y git make sed \
-    && rm -rf /var/cache/apk/* \
     && git clone https://github.com/lrhodin/imessage . \
     && sed -i -e 's/sudo //g' scripts/bootstrap-linux.sh \
-    && make install
+    && make build
+
+COPY /root/imessage-bridge/data/mautrix-imessage-v2 /usr/bin/
+RUN rm -rf /root/imessage-bridge
