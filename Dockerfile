@@ -10,9 +10,8 @@ ARG VARIANT=default
 
 WORKDIR /root/imessage-bridge
     
-ADD --keep-git-dir=true https://github.com/lrhodin/imessage .
-
 RUN apk -U upgrade \
     && apk --no-cache add git make \
     && rm -rf /var/cache/apk/* \
+    && git clone https://github.com/lrhodin/imessage . \
     && make install
