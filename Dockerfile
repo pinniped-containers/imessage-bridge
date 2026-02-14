@@ -10,8 +10,9 @@ ARG VARIANT=default
 
 WORKDIR /root/imessage-bridge
     
-RUN apt update && apt upgrade \
-    && apt install -y git make \
+RUN apt update -y && apt upgrade -y \
+    && apt install -y git make sed \
     && rm -rf /var/cache/apk/* \
     && git clone https://github.com/lrhodin/imessage . \
+    && sed -i -e 's/sudo //g' scripts/bootstrap-linux.sh \
     && make install
